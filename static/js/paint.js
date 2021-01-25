@@ -7,7 +7,7 @@ var canvas, ctx, flag = false,
 
     var x = "black",
         y = 4;
-    
+    //init canvas
     function init() {
         canvas = document.getElementById('can');
         ctx = canvas.getContext("2d");
@@ -27,7 +27,7 @@ var canvas, ctx, flag = false,
             findxy('out', e)
         }, false);
     }
-    
+    //change color
     function color(obj) {
         switch (obj.id) {
             case "green":
@@ -68,7 +68,7 @@ var canvas, ctx, flag = false,
         else y = 5;
     
     }
-    
+    //draw on canvas
     function draw() {
         ctx.beginPath();
         ctx.moveTo(prevX, prevY);
@@ -78,7 +78,7 @@ var canvas, ctx, flag = false,
         ctx.stroke();
         ctx.closePath();
     }
-    
+    //use clear button
     function erase() {
         var m = confirm("Want to clear");
         if (m) {

@@ -4,7 +4,7 @@ $(document).ready(function () {
     $('.loader').hide();
     $('#result').hide();
 
-    // Upload Preview
+    // upload preview
     function readURL(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
@@ -24,15 +24,15 @@ $(document).ready(function () {
         readURL(this);
     });
 
-    // Predict
+    // send to api
     $('#btn-predict').click(function () {
         var form_data = new FormData($('#upload-file')[0]);
 
-        // Show loading animation
+        // show loading animation
         $(this).hide();
         $('.loader').show();
 
-        // Make prediction by calling api /predict
+        // call /predict
         $.ajax({
             type: 'POST',
             url: '/predict',
@@ -43,7 +43,7 @@ $(document).ready(function () {
             processData: false,
             async: true,
             success: function (data) {
-                // Get and display the result
+                // get and display the result
                 
                 $('.loader').hide();
                 $('#result').fadeIn(600);
