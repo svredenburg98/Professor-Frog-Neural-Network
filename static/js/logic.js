@@ -53,11 +53,14 @@ $(document).ready(function () {
                       x: ['COOL', 'COLOR', 'DETAIL', 'FORM'],
                       y: [(data[1]), (data[2]), (data[3]), (data[4])],
                       type: 'bar',
-                      color: 'green'
+                      marker:{
+                        color: ['LightGreen', 'Plum', 'LightGreen', 'Plum']
+                      },
                     }
                   ];
                   
                   Plotly.newPlot('plot', chart);
+                $('#plot').fadeIn(600);
                 console.log('Success!');
                 
             },

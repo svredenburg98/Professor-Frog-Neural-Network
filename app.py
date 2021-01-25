@@ -136,9 +136,13 @@ def upload():
         detail = class_names[np.argmax(detail_score)]
         form = class_names[np.argmax(form_score)]
         if color == '1':
-            result = ["This is depressing!", int(cool), int(color), int(detail), int(form)]
+            result = ["This is depressing to look at", int(cool), int(color), int(detail), int(form)]
+        if detail == '1':
+            result = ["Did you even try?", int(cool), int(color), int(detail), int(form)]
+        if form == '1':
+            result = ["Ooh, very abstract!", int(cool), int(color), int(detail), int(form)]
         else:
-            result = ["This is passing", int(cool), int(color), int(detail), int(form)]
+            result = ["This is passing, I guess", int(cool), int(color), int(detail), int(form)]
         
         
        
