@@ -37,16 +37,29 @@ $(document).ready(function () {
             type: 'POST',
             url: '/predict',
             data: form_data,
+            dataType: 'json',
             contentType: false,
             cache: false,
             processData: false,
             async: true,
             success: function (data) {
                 // Get and display the result
+                
                 $('.loader').hide();
                 $('#result').fadeIn(600);
-                $('#result').text(' Result:  ' + data);
+                $('#result').text(data[0]);
+                var chart = [
+                    {
+                      x: ['COOL', 'COLOR', 'DETAIL', 'FORM'],
+                      y: [(data[1]), (data[2]), (data[3]), (data[4])],
+                      type: 'bar',
+                      color: 'green'
+                    }
+                  ];
+                  
+                  Plotly.newPlot('plot', chart);
                 console.log('Success!');
+                
             },
         });
     });

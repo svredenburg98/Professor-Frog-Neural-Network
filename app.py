@@ -12,7 +12,7 @@ from keras.models import load_model
 from keras.preprocessing import image
 import tensorflow as tf
 # Flask utils
-from flask import Flask, redirect, url_for, request, render_template
+from flask import Flask, redirect, url_for, request, render_template, jsonify
 from werkzeug.utils import secure_filename
 from gevent.pywsgi import WSGIServer
 
@@ -50,7 +50,7 @@ def cool_predict(img_path, model):
 
     # Be careful how your trained model deals with the input
     # otherwise, it won't make correct prediction!
-    x = preprocess_input(x, mode='caffe')
+    
 
     cool_preds = cool_model.predict(x)
     return cool_preds
@@ -65,7 +65,7 @@ def color_predict(img_path, model):
 
     # Be careful how your trained model deals with the input
     # otherwise, it won't make correct prediction!
-    x = preprocess_input(x, mode='caffe')
+    
 
     color_preds = color_model.predict(x)
     return color_preds
@@ -80,7 +80,7 @@ def detail_predict(img_path, model):
 
     # Be careful how your trained model deals with the input
     # otherwise, it won't make correct prediction!
-    x = preprocess_input(x, mode='caffe')
+    
 
     detail_preds = detail_model.predict(x)
     return detail_preds
@@ -95,7 +95,6 @@ def form_predict(img_path, model):
 
     # Be careful how your trained model deals with the input
     # otherwise, it won't make correct prediction!
-    x = preprocess_input(x, mode='caffe')
 
     form_preds = form_model.predict(x)
     return form_preds
@@ -132,10 +131,19 @@ def upload():
         detail_score = tf.nn.softmax(detail_preds[0])
         form_score = tf.nn.softmax(form_preds[0])
         class_names = ['1', '2', '3', '4']
-        result = "Cool Score: {} with {:.2f} percent confidence \n Color Score: {} with {:.2f} percent confidence \n Detail Score: {} with {:.2f} percent confidence \n Form Score: {} with {:.2f} percent confidence".format(class_names[np.argmax(cool_score)], 100 * np.max(cool_score), class_names[np.argmax(color_score)], 100 * np.max(color_score), class_names[np.argmax(detail_score)], 100 * np.max(detail_score), class_names[np.argmax(form_score)], 100 * np.max(form_score))
-        #pred_class = decode_predictions(preds, top=1)   
-        #result = str(pred_class[0][0][1])              
-        return result
+        cool = class_names[np.argmax(cool_score)]
+        color = class_names[np.argmax(color_score)]
+        detail = class_names[np.argmax(detail_score)]
+        form = class_names[np.argmax(form_score)]
+        if color == '1':
+            result = ["This is depressing!", int(cool), int(color), int(detail), int(form)]
+        else:
+            result = ["This is passing", int(cool), int(color), int(detail), int(form)]
+        
+        
+       
+            
+        return jsonify(result)
     return None
 
 
