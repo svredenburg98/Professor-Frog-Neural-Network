@@ -135,12 +135,24 @@ def upload():
         color = class_names[np.argmax(color_score)]
         detail = class_names[np.argmax(detail_score)]
         form = class_names[np.argmax(form_score)]
+        if color == '4':
+            result = ["Wow, incredible colors on this frog!", int(cool), int(color), int(detail), int(form)]
+        if detail == '4':
+            result = ["This must have took you hours! Are you ok?", int(cool), int(color), int(detail), int(form)]
+        if form == '4':
+            result = ["Oh my god this almost looks like a real frog!", int(cool), int(color), int(detail), int(form)]
+        if cool == '4':
+            result = ["I love this frog. You get an A+", int(cool), int(color), int(detail), int(form)]
         if color == '1':
             result = ["This is depressing to look at", int(cool), int(color), int(detail), int(form)]
         if detail == '1':
             result = ["Did you even try?", int(cool), int(color), int(detail), int(form)]
         if form == '1':
             result = ["Ooh, very abstract!", int(cool), int(color), int(detail), int(form)]
+        if cool == '1':
+            result = ["No I do not trust this frog at all", int(cool), int(color), int(detail), int(form)]
+        
+        
         else:
             result = ["This is passing, I guess", int(cool), int(color), int(detail), int(form)]
         
