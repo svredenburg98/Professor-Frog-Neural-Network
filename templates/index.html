@@ -4,10 +4,13 @@
         <h1>
             Draw a Frog!
         </h1>
-        Draw Here!<br>
+        <h2 id="professor">
+        <br><br>
         When you are done, right click and save<br>
         Then upload it<br>
-        <br><br><br><br><br><br><br><br><br><br><br><br>
+        </h2>
+        <img src="{{url_for('static', filename='professor_frog.png')}}" style="width:300px;height:300px;"/>
+        
     </div>
 </div>
 <div class="row">
@@ -33,13 +36,14 @@
             </div>
 
             <div class="loader" style="display:none;"></div>
+            
         </div>
     </div>
     <div class="col-md-6">
+    
     <h3 id="result">
         <span> </span>
     </h3>
-    
     <h4 id="plot">
         <span> </span>
     </h4>
