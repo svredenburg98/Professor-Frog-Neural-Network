@@ -11,3 +11,5 @@ I then created a web interface which allows users to submit a drawing through a 
 I used a jquery ajax method to handle the /predict API call and handle the results, using plotly to display them. 
 
 Because I had to find, download and grade the training images myself, I was very limited in dataset size. I hope to continue working on this, incorporating more data and models.
+
+To use this program, navigate to the professor-frog-neural-network directory, run python app.py in the terminal, and copy-paste the local host url from the python output into your web browser.
