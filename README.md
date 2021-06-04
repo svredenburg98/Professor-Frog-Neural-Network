@@ -4,7 +4,7 @@ Welcome to Professor Frog / Grade my Frog / Rate My Frog, Professor / Frog Profe
 
 This is a Standard Frog Grading System, allowing users to finally receive feedback on their beautiful frog drawings.
 
-I created four keras ML models to evaluate performance by various artistic metrics.
+I created four keras ML models using around 200 frog images I downloaded and organized to evaluate performance by various artistic metrics.
 
 I then created a web interface which allows users to submit a drawing through a post request, which would be taken by a python flask application which saved the image in the /uploads folder, ran the machine learning models on it, and sent back an array containing the professor evaluation and numerical values of grades.
 
